@@ -1,9 +1,16 @@
 import classes from './HeaderCartButton.module.css';
-import React,{Fragment} from 'react';
+import React,{useContext,Fragment} from 'react';
 import CartIcon from '../Cart/CartIcon';
+import CartContext from '../../Store/Cart-context';
 
 
 const Button=(props)=>{
+    const cartCtx = useContext(CartContext);
+
+    const numberOfCartItems = cartCtx.items.reduce((curNumber, item)=>{
+        return curNumber + item.amount;
+    },0);
+
     return (
         <Fragment>
             <button className={classes.button} onClick={props.onClickCartButton}>
@@ -14,7 +21,7 @@ const Button=(props)=>{
                     Your Cart 
                 </span>
                 <span className={classes.badge}>
-                     0
+                     {numberOfCartItems}
                 </span>
             </button>
         </Fragment>
