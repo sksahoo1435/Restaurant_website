@@ -6,7 +6,7 @@ import CartIcon from '../Cart/CartIcon';
 const Button=(props)=>{
     return (
         <Fragment>
-            <button className={classes.button}>
+            <button className={classes.button} onClick={props.onClickCartButton}>
                 <span className={classes.icon}>
                     <CartIcon/>
                 </span>
